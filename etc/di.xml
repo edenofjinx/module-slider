@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="FrontpageSliderImageUploader" type="Custom\FrontpageSlider\Model\Slider\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">slider/tmp/images</argument>
+            <argument name="basePath" xsi:type="string">slider/images</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Custom\FrontpageSlider\Controller\Adminhtml\Images\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">FrontpageSliderImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="Custom\FrontpageSlider\Model\Slider\DataProvider">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">FrontpageSliderImageUploader</argument>
+        </arguments>
+    </type>
+    <preference for="Custom\FrontpageSlider\Api\Data\Slider\FrontpageSliderInterface"
+                type="Custom\FrontpageSlider\Model\Slider\FrontpageSliderData" />
+    <preference for="Custom\FrontpageSlider\Api\FrontpageSliderRepositoryInterface"
+                type="Custom\FrontpageSlider\Model\SliderRepository" />
+<!--    <virtualType name="SliderDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">-->
+<!--        <arguments>-->
+<!--            <argument name="collection" xsi:type="object" shared="false">Custom\FrontpageSlider\Model\ResourceModel\FrontpageSliderFormCollection</argument>-->
+<!--            <argument name="filterPool" xsi:type="object" shared="false">SliderFilterPool</argument>-->
+<!--        </arguments>-->
+<!--    </virtualType>-->
+
+<!--    <virtualType name="SliderFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">-->
+<!--        <arguments>-->
+<!--            <argument name="appliers" xsi:type="array">-->
+<!--                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>-->
+<!--                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </virtualType>-->
+<!--    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">-->
+<!--        <arguments>-->
+<!--            <argument name="collections" xsi:type="array">-->
+<!--                <item name="frontpage_slider_data_source" xsi:type="string">Custom\FrontpageSlider\Model\ResourceModel\FrontpageSliderFormCollection</item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
+<!--    <virtualType name="Custom\FrontpageSlider\Model\ResourceModel\FrontpageSliderFormCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">-->
+<!--        <arguments>-->
+<!--            <argument name="mainTable" xsi:type="string">frontpage_slider</argument>-->
+<!--            <argument name="resourceModel" xsi:type="string">Custom\FrontpageSlider\Model\ResourceModel\FrontpageSliderResourceModel</argument>-->
+<!--        </arguments>-->
+<!--    </virtualType>-->
+</config>

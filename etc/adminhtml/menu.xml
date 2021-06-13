@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Custom_FrontpageSlider::slider"
+             title="Frontpage Slider"
+             translate="title"
+             module="Custom_FrontpageSlider"
+             sortOrder="990"
+             resource="Magento_Backend::system"/>
+        <add id="Custom_FrontpageSlider::slider_settings"
+             title="Frontpage Slider settings"
+             translate="title"
+             module="Custom_FrontpageSlider"
+             sortOrder="10"
+             parent="Custom_FrontpageSlider::slider"
+             action="adminhtml/system_config/edit/section/slider_config"
+             resource="Magento_Backend::system"/>
+        <add id="Custom_FrontpageSlider::slider_images"
+             title="Frontpage Slider images"
+             translate="title"
+             module="Custom_FrontpageSlider"
+             sortOrder="20"
+             parent="Custom_FrontpageSlider::slider"
+             action="slider/images/index/scope/stores"
+             resource="Magento_Backend::system"/>
+    </menu>
+</config>

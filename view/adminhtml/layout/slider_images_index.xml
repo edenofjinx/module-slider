@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="js">
+            <block class="Magento\Backend\Block\Template" template="Custom_FrontpageSlider::js.phtml"
+                   name="custom_js_backend"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <uiComponent name="frontpage_slider"/>
+        </referenceContainer>
+    </body>
+</page>

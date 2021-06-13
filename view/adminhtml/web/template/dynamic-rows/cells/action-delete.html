@@ -1,0 +1,9 @@
+<button class="action-delete"
+        data-bind="
+            click: function(){ $parent.deleteRecordAndSlider($record().index, $record().recordId, $record().data._latestValue.entity_id); },
+            attr: {
+                title: $parent.deleteButtonLabel
+            }
+        ">
+    <span translate="$parent.deleteButtonLabel"></span>
+</button>

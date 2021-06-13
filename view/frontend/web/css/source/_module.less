@@ -1,0 +1,114 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .frontpage-slider-container {
+        padding: 10px 20px;
+        width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        .carousel-container {
+            height: 400px;
+            position: relative;
+            box-sizing: border-box;
+
+            .carousel-inner {
+                overflow: hidden;
+                height: inherit;
+                width: 100%;
+
+                .carousel-track {
+                    display: block;
+                    height: inherit;
+                    transition: transform 0.5s;
+                    position: relative;
+
+                    &:before, &:after {
+                        display: table;
+                        content: '';
+                    }
+
+                    .slider-container {
+                        visibility: hidden;
+                        height: inherit;
+                        box-sizing: border-box;
+                        padding: 0 5px;
+                        float: left;
+
+                        .slide {
+                            height: inherit;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            & > * {
+                                flex: 1;
+                            }
+
+                            .slider-image {
+                                max-width: 100%;
+                                height: auto;
+                                margin: auto;
+                                object-fit: contain;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .carousel-controls {
+                button {
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 50%;
+                    border: 2px solid #000;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: none;
+                    z-index: 999;
+
+                    &.prev {
+                        left: -10px;
+                    }
+
+                    &.next {
+                        right: -10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 1300px) {
+    .frontpage-slider-container {
+        width: 1000px;
+    }
+}
+@media all and (max-width: 1050px) {
+    .frontpage-slider-container {
+        width: 100%;
+    }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .frontpage-slider-container {
+        margin: 0;
+        .carousel-container {
+            height: 300px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .frontpage-slider-container {
+        margin: 0;
+        .carousel-container {
+            height: 250px;
+        }
+    }
+}

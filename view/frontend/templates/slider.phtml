@@ -1,0 +1,33 @@
+<?php
+
+use Custom\FrontpageSlider\Block\Slider;
+
+/**
+ * @var Slider $block
+ */
+
+$collection = $block->getSlideCollection();
+$sliders = $collection->getItems();
+$mediaUrl = $block->getMediaUrl();
+$sliderCount = $collection->count();
+ ?>
+
+<?php if (!empty($sliders) && is_array($sliders)) : ?>
+    <div class=" carousel-container" data-mage-init='{"slider": {"count": <?= $sliderCount; ?>}}'>
+        <div class="carousel-inner">
+            <div class="carousel-track">
+                <?php foreach ($sliders as $slide) : ?>
+                    <div class="slider-container">
+                        <div class="slide">
+                            <img src="<?= $mediaUrl . $slide->getImageUrl(); ?>" alt="" class="slider-image">
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="prev">Pre</button>
+            <button class="next">Next</button>
+        </div>
+    </div>
+<?php endif; ?>
